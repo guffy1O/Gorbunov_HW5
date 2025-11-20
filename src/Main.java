@@ -1,13 +1,25 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-  // to see how IntelliJ IDEA suggests fixing it.
-  IO.println(String.format("Hello and welcome!"));
+import java.util.Arrays;
 
-  for (int i = 1; i <= 5; i++) {
-    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-    IO.println("i = " + i);
-  }
+public class Main {
+
+    public static void swapElements(Object[] array, int firstIndex, int secondIndex) {
+        if (firstIndex < 0 || firstIndex >= array.length ||
+                secondIndex < 0 || secondIndex >= array.length) {
+            throw new ArrayIndexOutOfBoundsException("Выход за границу массива");
+        }
+
+        Object temp = array[firstIndex];
+        array[firstIndex] = array[secondIndex];
+        array[secondIndex] = temp;
+    }
+
+
+    public static void main(String[] args) {
+        String[] numbers = {"0", "1", "2", "3", "4"};
+        System.out.println("До перестановки: " + Arrays.toString(numbers));
+
+        swapElements(numbers, 0, 3);
+
+        System.out.println("После перестановки: " + Arrays.toString(numbers)); // ["cherry", "banana", "apple"]
+    }
 }
