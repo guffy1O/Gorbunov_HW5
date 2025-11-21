@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 
@@ -28,9 +29,31 @@ public class Main {
         return result;
     }
 
+    public static void task3() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите строку: ");
+        String input = scanner.nextLine();
+
+        try {
+            checkForNumbers(input);
+            System.out.println("Строка принята.");
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public static void checkForNumbers(String str) throws IllegalArgumentException {
+        for (char c : str.toCharArray()) {
+            if (Character.isDigit(c)) {
+                throw new IllegalArgumentException("Строка не должна содержать число!");
+            }
+        }
+    }
+
     public static void main(String[] args)
     {
         task1();
         task2();
+        task3();
     }
 }
